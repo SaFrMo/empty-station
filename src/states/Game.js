@@ -14,8 +14,9 @@ export default class extends Phaser.State {
 
 		// create map
 		const mapData = createMap(this.game)
-		this.map = mapData.map
-		this.collisionLayer = mapData.collisionLayer
+		const { map, collisionLayer, interactionLayer } = mapData
+		Object.assign(this, { map, collisionLayer, interactionLayer })
+		this.interactionLayer.debug = true
 
 		// create player
 		this.player = createPlayer(this.game)
@@ -34,6 +35,10 @@ export default class extends Phaser.State {
         // dev mode entry point!
 		}
 
-		this.game.physics.arcade.collide(this.player, this.collisionLayer, () => console.log('collide'))
+		// player vs collision layer detection
+		this.game.physics.arcade.collide(this.player, this.collisionLayer)
+
+		// interaction detection
+		this.game.physics.arcade.overlap(this.player, this.interactionLayer, () => console.log('overlap'))
 	}
 }
