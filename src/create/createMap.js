@@ -8,8 +8,11 @@ export default game => {
 	bg.resizeWorld()
 
     // collision
-	map.createLayer('Blocking')
 	map.setCollisionBetween(0, 511, true, 'Blocking', true)
+	const collisionLayer = map.createLayer('Blocking')
 
-	return map
+	return {
+		map,
+		collisionLayer
+	}
 }

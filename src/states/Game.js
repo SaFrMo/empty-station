@@ -13,8 +13,9 @@ export default class extends Phaser.State {
 		this.game.physics.startSystem(Phaser.Physics.ARCADE)
 
 		// create map
-		this.map = createMap(this.game)
-		console.log(this.map)
+		const mapData = createMap(this.game)
+		this.map = mapData.map
+		this.collisionLayer = mapData.collisionLayer
 
 		// create player
 		this.player = createPlayer(this.game)
@@ -25,13 +26,14 @@ export default class extends Phaser.State {
 	}
 
 	render () {
+
+	}
+
+	update () {
 		if (__DEV__) {
         // dev mode entry point!
 		}
 
-		// console.log(this.blockingLayer)
-		this.game.physics.arcade.collide(this.player, this.map.layers[1])
-
-		this.game.debug.body(this.map.layers[0])
+		this.game.physics.arcade.collide(this.player, this.collisionLayer, () => console.log('collide'))
 	}
 }
