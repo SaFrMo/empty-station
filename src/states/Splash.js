@@ -10,10 +10,14 @@ export default class extends Phaser.State {
 		centerGameObjects([this.loaderBg, this.loaderBar])
 
 		this.load.setPreloadSprite(this.loaderBar)
-        //
-        // load your assets
-        //
+
+        // load images
+
 		this.load.image('astronaut', 'assets/images/astronaut.png')
+		this.load.image('tileset', 'assets/images/tileset.png')
+
+		// load tilemaps
+		this.load.tilemap('command-center', 'assets/tilemaps/command-center.json', null, Phaser.Tilemap.TILED_JSON)
 	}
 
 	create () {

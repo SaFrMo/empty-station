@@ -31,3 +31,4 @@ https://github.com/cstuncsik/phaser-es6-demo
 
 ## Art
 * [Astronaut](https://opengameart.org/content/astronauts-silhouettes)
+* [Sci-fi tileset](https://opengameart.org/content/32x32-sci-fi-tileset)

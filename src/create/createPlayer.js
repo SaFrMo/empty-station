@@ -1,20 +1,26 @@
 import Link from 'phaser-link'
-import Phaser from 'phaser'
 
 export default game => {
+	const playerWidth = 49.6
+	const playerHeight = 62.8
+
 	const player = game.add.existing(new Link({
 		game,
 		key: 'astronaut',
 		controls: true,
-		width: 49.6,
-		height: 62.8,
+		width: playerWidth,
+		height: playerHeight,
 		collideWorldBounds: false,
 		x: game.world.centerX,
-		y: game.world.centerY
+		y: 64
 	}))
-	player.anchor = new Phaser.PIXI.Point(0.5, 0.5)
-	player.width = 49.6
-	player.height = 62.8
+	player.anchor.set(0.5)
+	player.width = playerWidth
+	player.height = playerHeight
+
+	// enable physics
+	game.physics.arcade.enable(player)
+	player.body.setSize(496, 628, 0, 0)
 
 	return player
 }
